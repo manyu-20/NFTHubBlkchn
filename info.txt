@@ -1,0 +1,31 @@
+node1 account
+0xce9288D1c1577F0f23358108F59681ffD25C2165
+password=12345678
+
+node2 account 
+0x9Bf719c21aD331144077f8650F47BC1ba7A89752
+password=12345678
+
+bootnode enode url
+enode://48e1738a9eae6ff97509e440ab44a1a50b1059772e3f4c08ee08a53f651bfc47610a17c509654b6225c68ecb331c2b609214838a378131694a90407128538b90@127.0.0.1:0?discport=30301
+
+
+node1 command
+geth --networkid 14333 --datadir "./data" --bootnodes enode://48e1738a9eae6ff97509e440ab44a1a50b1059772e3f4c08ee08a53f651bfc47610a17c509654b6225c68ecb331c2b609214838a378131694a90407128538b90@127.0.0.1:0?discport=30301 --port 30303 --ipcdisable --syncmode full --http --allow-insecure-unlock --http.corsdomain "*" --http.port 8545 --http.api "eth,net,web3,personal,miner" --unlock 0xce9288D1c1577F0f23358108F59681ffD25C2165 --password password.txt --mine console
+
+geth --networkid 14333 --datadir "./data" --bootnodes enode://48e1738a9eae6ff97509e440ab44a1a50b1059772e3f4c08ee08a53f651bfc47610a17c509654b6225c68ecb331c2b609214838a378131694a90407128538b90@127.0.0.1:0?discport=30301 --port 30303 --ipcdisable --syncmode full --http --allow-insecure-unlock --http.corsdomain "*" --http.port 8545 --unlock 0xce9288D1c1577F0f23358108F59681ffD25C2165 --password password.txt console
+
+
+node2 command
+
+geth --networkid 14333 --datadir "./data" --bootnodes enode://48e1738a9eae6ff97509e440ab44a1a50b1059772e3f4c08ee08a53f651bfc47610a17c509654b6225c68ecb331c2b609214838a378131694a90407128538b90@127.0.0.1:0?discport=30301 --port 30304 --ipcdisable --syncmode full --http --allow-insecure-unlock --http.corsdomain "*" --http.port 8546 --unlock 0x9Bf719c21aD331144077f8650F47BC1ba7A89752 --password password.txt  console
+
+
+node new Account 
+0x610b269111ad7be47154a196fe049548717749e6
+password=12345678
+
+bootnode -nodekey "./boot.key" -verbosity 7 -addr "127.0.0.1:30301"
+
+contract deployed address
+Deployed address:0xCe8552D33C905386F25f83942781412E767Ba9e2
