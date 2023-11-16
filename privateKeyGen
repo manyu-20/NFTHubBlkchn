@@ -1,0 +1,26 @@
+const fs = require('fs');
+const { Wallet } = require('ethers');
+
+async function getPrivateKeyFromKeystore(keystorePath, password) {
+  // Read the keystore file
+  const keystore = JSON.parse(fs.readFileSync(keystorePath, 'utf8'));
+
+  try {
+    // Decrypt the private key using the password
+    const wallet = await Wallet.fromEncryptedJson(JSON.stringify(keystore), password);
+    
+    // Get the decrypted private key
+    const privateKey = wallet.privateKey;
+
+    console.log('Private Key:', privateKey);
+    return privateKey;
+  } catch (error) {
+    console.error('Error decrypting private key:', error.message);
+  }
+}
+
+// Usage
+const keystorePath = '../test.json';
+const password = '12345678';
+
+getPrivateKeyFromKeystore(keystorePath, password);
